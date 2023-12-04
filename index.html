@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Slice3D: Multi-Slice, Occlusion-Revealing, Single View 3D Reconstruction</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/project.css" media="screen" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/iconize.css" />
+    <script src="js/google-code-prettify/prettify.js"></script> -->
+  </head>
+
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2>Slice3D: Multi-Slice, Occlusion-Revealing, Single View 3D Reconstruction
+            </h2>
+            <h4 style="color:#5a6268;">Arxiv 2023 </h4>
+            <hr>
+            <h6>
+                <a href="https://yizhiwang96.github.io/" target="_blank">Yizhi Wang</a><sup>1</sup>,
+                <a href="https://www.sfu.ca/~wpintoli/" target="_blank">Wallace Lira</a><sup>1</sup>,
+                <a href="https://wqwang.me" target="_blank">Wenqi Wang</a><sup>2</sup>,
+                <a href="https://www.sfu.ca/~amahdavi/" target="_blank">Ali Mahdavi-Amiri</a><sup>1</sup>,
+                <a href="https://www.cs.sfu.ca/~haoz/index.html" target="_blank">Hao Zhang</a><sup>1</sup>,
+            <p>
+                <sup>1</sup>Simon Fraser University &nbsp;&nbsp;
+                <sup>2</sup>Tsinghua University&nbsp;&nbsp;&nbsp;&nbsp;
+            </p>
+
+            <div class="row justify-content-center">
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="" role="button"  target="_blank">
+                    <i class="fa fa-file"></i> Paper</a> </p>
+              </div>
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="" role="button"  target="_blank">
+                    <i class="fa fa-github-alt"></i> Code (To be released) </a> </p>
+              </div>
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="" role="button"  target="_blank">
+                    <i class="fa fa-desktop"></i> Live Demo (To be released) </a> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- abstract -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Abstract</h3>
+            <hr style="margin-top:0px">
+            <h6 style="color:#8899a5"> Our single-view 3D reconstruction method, Slice3D, predicts <em>multi-slice</em> images to reveal occluded parts without changing the camera (in contrast to <em>multi-view</em> synthesis), and then lifts the slices into a 3D model.</h6>
+
+              <video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                  <source src="video/teaser_v3.mp4" type="video/mp4">
+              </video>
+
+			        <br>
+
+          <p class="text-left">
+            We introduce <em>multi-slice</em> reasoning, a new notion for single-view 3D reconstruction which challenges the current and prevailing belief that multi-view synthesis is the most natural conduit between single-view and 3D. Our key observation is that object slicing is more advantageous than altering views to reveal occluded structures.
+            Specifically, slicing can peel through any occluder without obstruction, and in the limit (infinitely many slices), it is guaranteed to unveil all hidden object parts.
+            We realize our idea by developing Slice3D, a novel method for single-view 3D reconstruction by which first predicts multi-slice <em>images</em> from a single RGB image and then integrates the slices into a 3D model using a coordinate-based transformer network for signed distance prediction.
+            The slice images can be regressed or generated, both through a U-Net based network. For the former, we inject a learnable slice indicator code to designate each decoded image into a spatial slice location, while the slice generator is a denoising diffusion model operating on the entirety of slice images stacked on the input channels. Our Slice3D can prodoce a 3D mesh from a single view input within <b>only 20 seconds</b> on a NVIDIA A40 GPU.
+          </p>
+
+          <iframe width="800" height="450" src="https://www.youtube.com/embed/T0r0pMl0Oss" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h2>Results on Objaverse dataset</h2>
+            <hr style="margin-top:0px">
+            <video width="90%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                <source src="video/objv_0400.mp4" type="video/mp4">
+            </video>
+
+          <p class="text-center">
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h2>Results on ShapeNet dataset</h2>
+            <hr style="margin-top:0px">
+            <video width="90%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                <source src="video/sp_chairs.mp4" type="video/mp4">
+            </video>
+          <p class="text-left">
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h2>Results on Google Scanned Objects (GSO) dataset</h2>
+            <hr style="margin-top:0px">
+            <video width="90%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                <source src="video/gso.mp4" type="video/mp4">
+            </video>
+
+          <p class="text-center">
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+  
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h2>Consistent Slices</h2>
+            <hr style="margin-top:0px">
+            </video>
+            <img src="img/slices_visualization.jpg" alt="Description of the image" width="95%">
+
+          <p class="text-center">
+            Our slice images can be regressed/geenerated in a high level of consitency, which is very challenging for multi-view methods.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h2>Multiple instance generation</h2>
+            <hr style="margin-top:0px">
+
+
+          <img src="img/slices_generation.jpg" alt="Description of the image" width="95%">
+
+          <p class="text-center">
+            Multi-slice vs. multi-view reconstructions amid ambiguities in the chair legs. Both One-2-3-45 (bottom) and Slice3D (top) can produce multiple results. Our results are both plausible from consistent slices, while One-2-3-45 suffers from multi-view inconsistencies.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+
+  <!-- citing -->
+  <div class="container">
+    <div class="row ">
+      <div class="col-12">
+          <h3>Citation</h3>
+          <hr style="margin-top:0px">
+              <pre style="background-color: #e9eeef;padding: 1.25em 1.5em">
+<code>@article{wang2023slice3d,
+    title={Slice3D: Multi-Slice, Occlusion-Revealing, Single View 3D Reconstruction},
+    author={Wang, Yizhi and Lira, Wallace and Wang, Wenqi and Mahdavi-Amiri, Ali and Zhang, Hao},
+    journal={arXiv preprint arXiv:},
+    year={2023}
+}</code>
+              </pre>
+          <hr>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center" style="margin-bottom:10px">
+      Thanks to <a href="https://lioryariv.github.io/" target="_blank">Lior Yariv</a> and <a href="https://liuyuan-pal.github.io/SyncDreamer/" target="_blank">SyncDreamer</a> for the website template.
+  </footer>
+
+</body>
+</html>
