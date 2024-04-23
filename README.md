@@ -76,7 +76,7 @@ Then, run
 ```
 python gen_slices.py
 ```
-`gen_slices.py` will slice the object according to the rendered views. The default slicing direction is camera-aligned. You can change it by changing `--slice_direction camera` to `--slice_direction axis` to slice along the default axis of an object. But it is not suitable for Objaverse 3D models since they feature random rotations. For datasets like ShapeNet where 3D models are in canonical poses, we can use `--slice_direction axis`
+`gen_slices.py` will slice the objects and render the slices according to the above camera poses. The default slicing direction is camera-aligned. You can change it by changing `--slice_direction camera` to `--slice_direction axis` to slice along the default axis of an object. But it is not suitable for Objaverse 3D models since they feature random rotations. For datasets like ShapeNet where 3D models are in canonical poses, we can use `--slice_direction axis`
 
 ## Training
 
