@@ -46,7 +46,7 @@ data
     ├── input_models_path-lvis.json
 ```
 
-For SDF calculation, we followed [this script](https://github.com/Xharlie/DISN/blob/master/preprocessing/create_point_sdf_grid.py). We normalized all the 3D objects by resizing the boady diagnoal to 1.
+For SDF calculation, we followed [this script](https://github.com/Xharlie/DISN/blob/master/preprocessing/create_point_sdf_grid.py). We normalized all the 3D objects by resizing the body diagnoal to 1.
 
 ## Pretrained Checkpoints
 
@@ -122,7 +122,7 @@ python re_org_slices.py --name_dataset objaverse
 then, we employ the trained GT-Slice-Images-to-3D model to reconstruct from these generated images:
 
 ```
-CUDA_VISIBLE_DEVICES=0 python reconstruct.py --name_exp 2024_0419_objaverse_gt_to_3d_pretrained --name_dataset objaverse --name_ckpt 156_192796_0.007746_0.9002.ckpt --name_model gtslice --from_which_slices gen
+CUDA_VISIBLE_DEVICES=0 python reconstruct.py --name_exp 2024_0419_objaverse_gt_to_3d_pretrained --name_dataset objaverse --name_ckpt 116_208728_0.007433_0.9034.ckpt --name_model gtslice --from_which_slices gen
 ```
 
 We have provided a pretrained GT-Slice-Images-to-3D model in `reg_slices/experiments/2024_0419_objaverse_gt_to_3d/ckpt`, if you want to train it by yourself:
@@ -170,7 +170,7 @@ cd gen_slices
 python main.py --base configs/latent-diffusion/custom-sin-img-ldm-kl-8-infer.yaml --gpus 0,
 python re_org_slices.py --name_dataset custom_sin_img
 cd ../reg_slices
-CUDA_VISIBLE_DEVICES=0 python reconstruct.py --name_exp 2024_0419_objaverse_gt_to_3d_pretrained --name_dataset objaverse --name_ckpt 156_192796_0.007746_0.9002.ckpt --name_model custom_sin_img --from_which_slices gen
+CUDA_VISIBLE_DEVICES=0 python reconstruct.py --name_exp 2024_0419_objaverse_gt_to_3d_pretrained --name_dataset objaverse --name_ckpt 116_208728_0.007433_0.9034.ckpt --name_model custom_sin_img --from_which_slices gen
 ```
 The result will be saved in `2024_0419_objaverse_gt_to_3d_pretrained/results/custom_sin_img/`.
 

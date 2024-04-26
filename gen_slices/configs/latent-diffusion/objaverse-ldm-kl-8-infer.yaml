@@ -2,7 +2,7 @@ model:
   base_learning_rate: 5.0e-5   # set to target_lr by starting main.py with '--scale_lr False'
   target: ldm.models.diffusion.ddpm.LatentDiffusion
   params:
-    ckpt_path: "logs/2024-04-23T02-11-33_objaverse-ldm-kl-8/checkpoints/epoch=000013.ckpt"
+    ckpt_path: "logs/2024-04-23T02-11-33_objaverse-ldm-kl-8/checkpoints/epoch=000049.ckpt"
     linear_start: 0.0015
     linear_end: 0.0155
     num_timesteps_cond: 1

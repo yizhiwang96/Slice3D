@@ -35,6 +35,7 @@ def crop_slices(args):
     n_bs = args.n_bs
 
     for idx, shape_uid in enumerate(shape_uids):
+        if idx % 1000 == 0: print(idx)
         batch_id = idx // n_bs
         case_id = idx % n_bs
         if args.type_slices == 'gen':
