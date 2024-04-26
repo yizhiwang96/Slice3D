@@ -115,7 +115,7 @@ which will save the generated slice images to `{ckpt_path}/images_testing_sample
 
 
 #### Generated Slice Images to 3D
-First, we orgnize the generated slice images according to the layout of `data`. In `gen_slices`, run:
+First, we organize the generated slice images according to the layout of `data`. In `gen_slices`, run:
 ```
 python re_org_slices.py --name_dataset objaverse
 ```
@@ -135,7 +135,7 @@ cd gen_slices
 python main.py --base configs/autoencoder/autoencoder_kl_f8_infer.yaml --gpus 0,
 ```
 
-Then we orgnize the reconstructed slice images:
+Then we organize the reconstructed slice images:
 ```
 python re_org_slices.py --name_dataset objaverse --type_slices rec --dir_slices logs/autoencoder_kl_f8/images_reconstructed
 ```
