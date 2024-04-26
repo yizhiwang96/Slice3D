@@ -54,9 +54,9 @@ All the pretrained checkpoints can be found in [OneDrive](https://1drv.ms/f/s!Ak
 ```
 reg_slices
 ├── experiments
-│    ├── 2024_0419_objaverse_regression
+│    ├── 2024_0419_objaverse_regression_pretrained
 │    │   ├── ckpt
-│    ├── 2024_0419_objaverse_gt_to_3d
+│    ├── 2024_0419_objaverse_gt_to_3d_pretrained
 │    │   ├── ckpt
 gen_slices
 ├── logs
