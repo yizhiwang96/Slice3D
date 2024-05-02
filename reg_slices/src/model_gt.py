@@ -85,18 +85,17 @@ class Slices3DGTModel(nn.Module):
 
         img_slices = feed_dict['img_slices']
         img_slices = img_slices.view(n_bs, self.n_slices, 3, n_w, n_h).view(n_bs * self.n_slices, 3, n_w, n_h)
-        img_inpt_and_slices = torch.cat([img_input, img_slices], 0) # n_bs * (n_slices + 1)
-        feat_list, feats_global = self.img_encoder(img_slices) # n * (n_slices + 1), 3, w, h
+        img_inpt_and_slices = torch.cat([img_input, img_slices], 0) # n_bs * n_slices
+        feat_list, feats_global = self.img_encoder(img_slices) # n * n_slices, 3, w, h
 
         feat_interp = []
         img_pts = self.project_coord(qry_rot, feed_dict['trans_mat_wo_rot_tp'])
         img_pts = img_pts.view(n_bs, 1, n_qry, 2).expand(-1, self.n_slices, -1, -1).reshape(n_bs * (self.n_slices), n_qry, 2)
         for idx in range(len(feat_list)):
-            n_bs_, n_c, n_h, n_w = feat_list[idx].shape
-            feat_planes = feat_list[idx].view(n_bs_, n_c, n_h, n_w)
+            feat_planes = feat_list[idx]
             feats_out = self.sample_from_planes(feat_planes, img_pts)
             feat_interp.append(feats_out.squeeze(1))
-        feat_local_aggregated = torch.cat(feat_interp, dim=2) # n_bs * (n_slices + 1), n_qry, 1472
+        feat_local_aggregated = torch.cat(feat_interp, dim=2) # n_bs * n_slices, n_qry, 1472
         feat_local_aggregated = feat_local_aggregated.view(n_bs, self.n_slices, n_qry, 1472).permute(0, 2, 1, 3).reshape(n_bs, n_qry, self.n_slices, 1472)
 
         feat_qry = self.pts_feat_extractor(qry_rot)

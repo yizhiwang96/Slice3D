@@ -20,10 +20,10 @@ def crop_slices(args):
 
     if args.type_slices == 'gen':
         dir_tgt = f'../data/{args.name_dataset}/04_img_slices_gen'
-        shape_uids = open('../data/objaverse/03_splits/test.lst', 'r').read().split('\n')
+        shape_uids = open(f'../data/{args.name_dataset}/03_splits/test.lst', 'r').read().split('\n')
     else:
         dir_tgt = f'../data/{args.name_dataset}/05_img_slices_rec'
-        shape_uids_ = open('../data/objaverse/03_splits/trainval.lst', 'r').read().split('\n')
+        shape_uids_ = open(f'../data/{args.name_dataset}/03_splits/trainval.lst', 'r').read().split('\n')
         shape_uids_num = len(shape_uids_)
         shape_uids = shape_uids_ * args.n_views
 
@@ -54,7 +54,7 @@ def crop_slices(args):
                 else:
                     part_name = part_list_[idx_j]
                 dir_save = f'{dir_tgt}/{shape_uid}/{view_id}/{axis}_{part_name}.png'
-                if os.path.exists(dir_save): continue
+                if args.type_slices == 'rec' and os.path.exists(dir_save): continue
                 crop_area = (idx_j * img_size, idx_i * img_size, (idx_j + 1) * img_size, (idx_i + 1) * img_size)
                 img_slice = img.crop(crop_area)
                 img_slice.save(dir_save)

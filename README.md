@@ -170,7 +170,7 @@ cd gen_slices
 python main.py --base configs/latent-diffusion/custom-sin-img-ldm-kl-8-infer.yaml --gpus 0,
 python re_org_slices.py --name_dataset custom_sin_img
 cd ../reg_slices
-CUDA_VISIBLE_DEVICES=0 python reconstruct.py --name_exp 2024_0419_objaverse_gt_to_3d_pretrained --name_dataset objaverse --name_ckpt 116_208728_0.007433_0.9034.ckpt --name_model custom_sin_img --from_which_slices gen
+CUDA_VISIBLE_DEVICES=0 python reconstruct.py --name_exp 2024_0419_objaverse_gt_to_3d_pretrained --name_dataset custom_sin_img --name_ckpt 116_208728_0.007433_0.9034.ckpt --name_model gtslice --from_which_slices gen
 ```
 The result will be saved in `2024_0419_objaverse_gt_to_3d_pretrained/results/custom_sin_img/`.
 
